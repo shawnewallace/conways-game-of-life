@@ -1,7 +1,7 @@
 function GameController(props) {
 	return (
 		<div>
-			<span>Game Controller here!</span><br />
+			<span>Controller</span><br />
 
 			<input
 				name="autoTick"
