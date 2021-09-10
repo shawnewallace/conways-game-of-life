@@ -19,7 +19,6 @@ namespace Cgol.Con
 			app.Description = "Console version of Conway's Game of Life";
 			app.HelpOption("-?|-h|--help");
 
-
 			Console.Clear();
 
       var serviceProvider = new ServiceCollection()

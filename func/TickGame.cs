@@ -17,7 +17,7 @@ namespace Cgol.Func
 		}
 
 		[Function("TickGame")]
-		public async Task<HttpResponseData> Run(
+		public async Task<HttpResponseData> RunAsync(
 			[HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req,
 			FunctionContext executionContext)
 		{
