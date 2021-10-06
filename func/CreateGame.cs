@@ -25,20 +25,23 @@ namespace Cgol.Func
 			[HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req,
 			FunctionContext executionContext)
 		{
-			var requestBody = string.Empty;
 
-			using(var sr = new StreamReader(req.Body)){
-				requestBody = await sr.ReadToEndAsync();
-			}
+			_gameFactory.Width = 10;
+			_gameFactory.Height = 10;
+			_gameFactory.FillFactor = .5;
 
-			var data = JsonConvert.DeserializeObject<GameParameters>(requestBody);
+			var game = _gameFactory.Execute();
 
-			var response = req.CreateResponse(HttpStatusCode.OK);
-			response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+			var serializedGame = JsonConvert.SerializeObject(game);
 
-			response.WriteString($"Hello World, time and date are {DateTime.Now.ToString()}");
+			var response = req.CreateResponse(HttpStatusCode.Created);
+			await response.WriteStringAsync(serializedGame);
+			response.Headers.Add("Content-Type", "application/json");
 
 			return response;
 		}
 	}
+
+	public class TickGame {}
+	public class GameList {}
 }

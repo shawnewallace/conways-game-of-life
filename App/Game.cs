@@ -33,7 +33,7 @@ namespace Cgol.App
 				for (var j = 0; j < Height; j++)
 				{
 					if (IsAliveAt(i, j))
-						result += "O";
+						result += "*";
 					else
 						result += " ";
 				}
