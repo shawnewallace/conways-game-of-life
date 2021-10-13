@@ -15,14 +15,10 @@ namespace Cgol.App
 		public int Height { get { return Board.GetLength(1); } }
 		public int Width { get { return Board.GetLength(0); } }
 		public ICell[,] Board { get; private set; }
-		ICell[,] _lastBoard;
 		public ITicker Ticker { get; }
 
 		public bool IsAliveAt(int x, int y) => Board[x, y].Alive;
-		public void Tick()
-		{
-			Board = Ticker.Execute(Board);
-		}
+		public void Tick() => Board = Ticker.Execute(Board);
 
 		public override string ToString()
 		{
@@ -32,10 +28,8 @@ namespace Cgol.App
 			{
 				for (var j = 0; j < Height; j++)
 				{
-					if (IsAliveAt(i, j))
-						result += "*";
-					else
-						result += " ";
+					if (IsAliveAt(i, j)) result += "*";
+					else result += " ";
 				}
 				result += "\n";
 			}

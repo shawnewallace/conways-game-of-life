@@ -36,15 +36,15 @@ namespace Cgol.Con
       logger.LogDebug("Starting Applicaiton");
 
       var creator = serviceProvider.GetService<IGameFactory>();
-      creator.Width = 10;
-      creator.Height = 10;
+      creator.Width = 20;
+      creator.Height = 20;
       creator.FillFactor = .5;
       //creator.Generator = BoardGenerator.Random;
 
       var game = creator.Execute();
 
       Console.WriteLine(game.ToString());
-      Pause(1);
+      PauseForNSeconds(1);
 
       DrawBoard(game);
 
@@ -69,7 +69,7 @@ namespace Cgol.Con
     {
       Console.Clear();
       Console.WriteLine(game.ToString());
-      Pause(1);
+      PauseForNSeconds(1);
     }
 
     private static ICell[,] DuplicateBoard(ICell[,] board)
@@ -96,9 +96,9 @@ namespace Cgol.Con
       return false;
     }
 
-    private static void Pause(int numSeconds = 3)
+    private static void PauseForNSeconds(int n = 3)
     {
-      Thread.Sleep(numSeconds * 1000);
+      Thread.Sleep(n * 1000);
     }
   }
 }

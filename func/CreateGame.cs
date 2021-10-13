@@ -26,8 +26,8 @@ namespace Cgol.Func
 			FunctionContext executionContext)
 		{
 
-			_gameFactory.Width = 10;
-			_gameFactory.Height = 10;
+			_gameFactory.Width = 20;
+			_gameFactory.Height = 20;
 			_gameFactory.FillFactor = .5;
 
 			var game = _gameFactory.Execute();
